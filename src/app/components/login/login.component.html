@@ -1,0 +1,38 @@
+<!-- Form -->
+<div class="inner-wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" #resetStudentForm="ngForm" novalidate>
+        <mat-card class="pepe">
+            <mat-card>
+                <h3>Log in</h3>
+            </mat-card>
+            <mat-card>
+                <!-- userName -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="userName" formControlName="userName">
+                    <mat-error *ngIf="handleError('userName', 'required')">
+                        You must provide a<strong> user Name</strong>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card>
+            <mat-card>
+                <!-- passWord -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="passWord" formControlName="passWord" type="password">
+                    <mat-error *ngIf="handleError('passWord', 'required')">
+                        You must provide a<strong> passWord</strong>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card>
+            <mat-divider fxFlex="1 0" ></mat-divider>
+            <!-- Submit & Reset -->
+            <mat-card>
+                <div class="full-wrapper button-wrapper">
+                    <div class="button-wrapper">
+                        <button mat-flat-button color="warn">Submit</button>
+                    </div>
+                </div>
+            </mat-card>
+        </mat-card>
+        
+    </form>
+</div>

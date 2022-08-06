@@ -1,0 +1,22 @@
+<div class="inner-wrapper">
+    <form [formGroup]="categoryForm" (ngSubmit)="updateCategoryForm()" #resetCategoryForm="ngForm" novalidate>
+        <mat-card>
+            <!-- categoryName -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="category name" formControlName="categoryName">
+                <mat-error *ngIf="handleError('categoryName', 'required')">
+                    You must provide a<strong> category name</strong>
+                </mat-error>
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card>
+            <!-- Submit & Reset -->
+            <div class="full-wrapper button-wrapper">
+                <div class="button-wrapper">
+                    <button mat-flat-button color="warn">Update</button>
+                </div>
+            </div>
+        </mat-card>
+    </form>
+</div>

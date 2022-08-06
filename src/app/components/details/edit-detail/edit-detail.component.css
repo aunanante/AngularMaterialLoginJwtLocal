@@ -1,0 +1,12 @@
+mat-grid-tile {
+    background: lightblue;
+   
+}
+.text-inside-grid {
+    position: absolute;
+    left: 5px;
+}
+
+mat-form-field {
+    width: 300px;
+  }

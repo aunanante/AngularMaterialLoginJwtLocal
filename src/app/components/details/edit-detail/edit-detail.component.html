@@ -1,0 +1,44 @@
+<div class="title-group">
+    <h1 class="mat-h1">Edit Detail</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+<div class="inner-wrapper">
+    <form [formGroup]="detailForm" (ngSubmit)="updateMyDetailsForm()" #resetDetailForm="ngForm" novalidate>
+        <mat-grid-list cols="2" rowHeight="8:1">
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- detailName -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="detailName" formControlName="detailName" width="150">
+                        <mat-error *ngIf="handleError('detailName', 'required')">
+                            You must provide a<strong> detailName</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- imageDetailUrl -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="imageDetailUrl" formControlName="imageDetailUrl" >
+                        <mat-error *ngIf="handleError('imageDetailUrl', 'required')">
+                            You must provide a<strong> imageDetailUrl</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+            
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- Submit & Reset -->
+                    <div class="full-wrapper button-wrapper">
+                        <div class="button-wrapper">
+                            <button mat-flat-button color="warn">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        
+    </form>
+</div>

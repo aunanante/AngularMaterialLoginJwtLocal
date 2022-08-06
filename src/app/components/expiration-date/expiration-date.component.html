@@ -1,0 +1,95 @@
+<div class="example-button-row">   
+    <button mat-raised-button color="accent" (click)="onClick($event)">Set Expiration Date</button>
+</div>
+
+<div class="title-group">
+    <h1 class="mat-h1">Commerces List</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+<mat-card>
+    <div class="controlers-wrapper">
+        <mat-form-field appeance = "fill">
+            <input matInput (keyup)="applyFilterOne($event)" placeholder="Search">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+    </div>
+</mat-card>
+<mat-card>
+    <div class="controlers-wrapper">
+        <mat-form-field appearance="fill">
+            <mat-label>Villes </mat-label>
+            <mat-select placeholder="ville" (selectionChange)="applyFilterOne1($event.value)">
+                <mat-option *ngFor="let ville of villes" [value]="(ville.id).toString()">
+                    {{ville.villeName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-card>
+
+<table mat-table matSort [dataSource]="dataSourceCommerce" #TableCommerceSort="matSort" class="mat-elevation-z8"
+    style="width: 100%;">
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- commerceName Column -->
+    <ng-container matColumnDef="commerceName">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>commerceName</th>
+        <td mat-cell *matCellDef="let element">{{ element.commerceName }}</td>
+    </ng-container>
+
+    <!-- transfert Column -->
+    <ng-container matColumnDef="transfert">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>transfert</th>
+        <td mat-cell *matCellDef="let element">{{ element.transfert }}</td>
+    </ng-container>
+
+    <!-- date_transfert Column -->
+    <ng-container matColumnDef="date_transfert">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>date_transfert</th>
+        <td mat-cell *matCellDef="let element">{{ element.date_transfert }}</td>
+    </ng-container>
+
+     <!-- type_transfert Column -->
+     <ng-container matColumnDef="type_transfert">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>type_transfert</th>
+        <td mat-cell *matCellDef="let element">{{ element.type_transfert }}</td>
+    </ng-container>
+
+     <!-- payed Column -->
+     <ng-container matColumnDef="payed">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>payed</th>
+        <td mat-cell *matCellDef="let element">{{ element.payed }}</td>
+    </ng-container>
+
+     <!-- date_peremption Column -->
+     <ng-container matColumnDef="date_peremption">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>date_peremption</th>
+        <td mat-cell *matCellDef="let element">{{ element.date_peremption }}</td>
+    </ng-container>
+
+     <!-- presentation Column -->
+     <ng-container matColumnDef="presentation">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef mat-sort-header>presentation</th>
+        <td mat-cell *matCellDef="let element">{{ element.presentation }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th style="width:100px;" mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+            <button mat-raised-button color="primary" class="push-right"
+                [routerLink]="['/edit-commerce/', element.id]">Edit</button>
+            <button mat-raised-button color="accent" (click)="deleteCommerce(i, element)">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCommerce"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCommerce" (click)="onRowClicked(row)"></tr>
+
+</table>
+
+<mat-paginator #TableCommercePaginator="matPaginator" [pageSize]="3" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

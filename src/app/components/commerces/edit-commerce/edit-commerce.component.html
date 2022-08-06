@@ -1,0 +1,198 @@
+<div class="title-group">
+    <h1 class="mat-h1">Edit Commerce</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+<div class="inner-wrapper">
+    <form [formGroup]="commerceForm" (ngSubmit)="updateCommerceForm()" #resetCommerceForm="ngForm" novalidate>
+
+        <mat-grid-list cols="2" rowHeight="8:1">
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- commerceName -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="commerce Name" formControlName="commerceName">
+                        <mat-error *ngIf="handleError('commerceName', 'required')">
+                            You must provide a<strong> commerce Name</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- proprietaireName -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="proprietaire Name" formControlName="proprietaireName">
+                        <mat-error *ngIf="handleError('proprietaireName', 'required')">
+                            You must provide a<strong> proprietaire Name</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- adresse -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="adresse" formControlName="adresse">
+                        <mat-error *ngIf="handleError('adresse', 'required')">
+                            You must provide a<strong> adresse</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- telephone -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="telephone" formControlName="telephone">
+                        <mat-error *ngIf="handleError('telephone', 'required')">
+                            You must provide a<strong> telephone</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- email -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="email" formControlName="email">
+                        <mat-error *ngIf="handleError('email', 'required')">
+                            You must provide a<strong> email</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+            <!-- ****** -->
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- transfert -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="transfert" formControlName="transfert">
+                        <mat-error *ngIf="handleError('transfert', 'required')">
+                            You must provide a<strong> transfert</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- date_transfert -->
+                    <mat-form-field>
+                        <input matInput readonly [matDatepicker]="date_transfert" placeholder="Date Created"
+                            formControlName="date_transfert">
+                        <mat-datepicker-toggle matSuffix [for]="date_transfert"></mat-datepicker-toggle>
+                        <mat-datepicker #date_transfert></mat-datepicker>
+                        <!-- error -->
+                        <mat-error *ngIf="handleError('date_transfert', 'required')">
+                            Please enter <strong>date Created</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- payed -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="payed" formControlName="payed" readonly>
+                        <!-- <mat-error *ngIf="handleError('payed', 'required')">
+                            You must provide a<strong> payed</strong>
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- date_peremption -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="date_peremption" (input)="calculateValues()"
+                            formControlName="date_peremption">
+                        <mat-error *ngIf="handleError('date_peremption', 'required')">
+                            You must provide a<strong> date_peremption</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- presentation -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="presentation" formControlName="presentation">
+                        <mat-error *ngIf="handleError('presentation', 'required')">
+                            You must provide a<strong> presentation</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- type_transfert -->
+                    <!-- <mat-form-field class="example-full-width">
+                        <input matInput placeholder="type_transfert" formControlName="type_transfert">
+                        <mat-error *ngIf="handleError('type_transfert', 'required')">
+                            You must provide a<strong> type_transfert</strong>
+                        </mat-error>
+                    </mat-form-field> -->
+
+                    <mat-radio-group formControlName="type_transfert" class="margin-left">
+                        <mat-radio-button value="mtn"> mtn </mat-radio-button>
+                        <mat-radio-button value="orange"> orange </mat-radio-button>
+                        <mat-radio-button value="uba"> uba </mat-radio-button>
+                        <mat-radio-button value="autre"> autre </mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+
+            </mat-grid-tile>
+
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <div class="controlers-wrapper">
+                        <div [formGroup]="$any(commerceForm.get('ville'))">
+                            <!-- ville_id -->
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="ville_id" formControlName="id" readonly>
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- Submit & Reset -->
+                    <mat-card>
+                        <div class="full-wrapper button-wrapper">
+                            <div class="button-wrapper">
+                                <button mat-flat-button color="warn">Submit</button>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <!-- Left block -->
+
+        <mat-divider fxFlex="1 0"></mat-divider>
+
+    </form>
+</div>
